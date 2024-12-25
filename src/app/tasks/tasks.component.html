@@ -1,0 +1,20 @@
+
+@if(isAddingTask){
+  <app-addtask (cancel)="onCancelAddTask()" (submit)="onAddTask($event)"/>
+}
+
+<section id="tasks">
+  <header>
+    <h2>{{ username }}'s tasks</h2>
+    <menu>
+      <button (click)="onStartAddTask()">Add Task</button>
+    </menu>
+  </header>
+  <ul>
+    @for (task of usertasks; track $index) {
+    <li>
+      <app-singletask [task]=task (complete)="onCompleteTask($event)" />
+    </li>
+    }
+  </ul>
+</section>
